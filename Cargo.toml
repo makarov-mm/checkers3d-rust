@@ -1,0 +1,32 @@
+[package]
+name = "checkers3d"
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.85"
+description = "3D Checkers"
+authors = ["Mykhailo Makarov"]
+license = "MIT"
+repository = "https://github.com/makarov-mm"
+
+[dependencies]
+arboard = { version = "3", default-features = false }
+cpal = "0.16"
+fontdb = "0.23"
+fontdue = "0.9"
+gl = "0.14"
+glutin = "0.32"
+glutin-winit = "0.5"
+raw-window-handle = "0.6"
+sys-locale = "0.3"
+winit = "0.30"
+
+# The window's icon is read from the icon file where it is not a resource of the executable.
+[target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
+png = "0.18"
+
+[build-dependencies]
+winresource = "0.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
